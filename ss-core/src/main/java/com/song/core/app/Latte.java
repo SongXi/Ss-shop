@@ -4,20 +4,24 @@ import android.content.Context;
 import java.util.WeakHashMap;
 
 /**
- *
  * 工具类
  */
 
 public class Latte {
 
-   public static Configurator init(Context context){
-     getConfigurator().put(ConfigType.APPLICATION_CONTEXT.name(),context.getApplicationContext());
-     return Configurator.getInstance();
+    // 項目是否初始化的标志位 只能调用一次init方法
+    private static boolean isInit = false;
+    public static Configurator init(Context context) {
+        if (!isInit) {
+            getConfigurator().put(ConfigType.APPLICATION_CONTEXT.name(),
+                    context.getApplicationContext());
+        }
+        return Configurator.getInstance();
+    }
 
-   }
 
-  private static WeakHashMap<String,Object> getConfigurator(){
-    return Configurator.getInstance().getConfigMap();
-  }
+    private static WeakHashMap<String, Object> getConfigurator() {
+        return Configurator.getInstance().getConfigMap();
+    }
 
 }

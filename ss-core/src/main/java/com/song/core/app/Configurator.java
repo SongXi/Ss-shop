@@ -3,7 +3,6 @@ package com.song.core.app;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.Iconify.IconifyInitializer;
-import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.WeakHashMap;
@@ -36,6 +35,7 @@ public final class Configurator {
 
     // 初始化完成后调用
     public void configDone() {
+        initIcon();
         SS_CONFIGS.put(ConfigType.CONFIG_READ.name(), true);
     }
 
