@@ -1,0 +1,1 @@
+include ':app', ':ss-annotations', ':ss-complier', ':ss-core', ':ss-ec'
