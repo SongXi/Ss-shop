@@ -8,7 +8,7 @@ import java.util.WeakHashMap;
  * 工具类
  */
 
-public class Latte {
+public class SsUtils {
 
     // 項目是否初始化的标志位 只能调用一次init方法
     private static boolean isInit = false;
