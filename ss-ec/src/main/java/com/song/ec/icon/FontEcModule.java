@@ -4,7 +4,9 @@ import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.IconFontDescriptor;
 
 /**
- * Created by zhaojp on 17-8-16.
+ * FontIcon描述类  \
+ * 指定ttf文件的地址
+ * 并返回所有FontIcon对象
  */
 
 public class FontEcModule implements IconFontDescriptor {

@@ -4,6 +4,7 @@ import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.Iconify.IconifyInitializer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.WeakHashMap;
 
@@ -12,7 +13,7 @@ import java.util.WeakHashMap;
  */
 public final class Configurator {
 
-    private static final WeakHashMap<String, Object> SS_CONFIGS = new WeakHashMap<>();
+    private static final HashMap<String, Object> SS_CONFIGS = new HashMap<>();
     private static final List<IconFontDescriptor> ICON_FONT_LIST=new ArrayList<>();
     private Configurator() {
         // 配置剛開始
@@ -28,7 +29,7 @@ public final class Configurator {
         public static final Configurator INSTANCE = new Configurator();
     }
 
-    final WeakHashMap<String,Object> getConfigMap() {
+    final HashMap<String,Object> getConfigMap() {
         return SS_CONFIGS;
     }
 
@@ -69,7 +70,7 @@ public final class Configurator {
 
     //初始化时调用.用来初始化Iconity
     private void initIcon(){
-        if (ICON_FONT_LIST.isEmpty()){
+        if (!ICON_FONT_LIST.isEmpty()){
             IconifyInitializer with = Iconify.with(ICON_FONT_LIST.get(0));
             for (int i=1;i<ICON_FONT_LIST.size();i++){
                 with.with(ICON_FONT_LIST.get(i));

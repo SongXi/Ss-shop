@@ -1,11 +1,11 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.jakewharton.butterknife'  //帮助我们在library中生成R2资源文件  在library中通过R2.id来绑定资源
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -31,5 +31,10 @@ dependencies {
     compile project(':ss-annotations')
     //字体图表库
     compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
-
+    //Fragmentation
+    compile 'me.yokeyword:fragmentation:0.10.1'
+    compile 'me.yokeyword:fragmentation-swipeback:0.7.9'
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

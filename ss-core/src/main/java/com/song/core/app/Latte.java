@@ -1,6 +1,7 @@
 package com.song.core.app;
 
 import android.content.Context;
+import java.util.HashMap;
 import java.util.WeakHashMap;
 
 /**
@@ -20,8 +21,12 @@ public class Latte {
     }
 
 
-    private static WeakHashMap<String, Object> getConfigurator() {
+    private static HashMap<String, Object> getConfigurator() {
         return Configurator.getInstance().getConfigMap();
+    }
+
+    public static Context getApplicationContext(){
+        return Configurator.getInstance().getConfiguration(ConfigType.APPLICATION_CONTEXT);
     }
 
 }
