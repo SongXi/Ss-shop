@@ -2,7 +2,9 @@ package com.song.core.app;
 
 import android.content.Context;
 import java.util.HashMap;
+import java.util.List;
 import java.util.WeakHashMap;
+import okhttp3.Interceptor;
 
 /**
  * 工具类
@@ -25,8 +27,11 @@ public class SsUtils {
         return Configurator.getInstance().getConfigMap();
     }
 
+    public static <T> T getConfig(ConfigType configName){
+        return Configurator.getInstance().getConfiguration(configName);
+    }
+
     public static Context getApplicationContext(){
         return Configurator.getInstance().getConfiguration(ConfigType.APPLICATION_CONTEXT);
     }
-
 }

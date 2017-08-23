@@ -15,6 +15,10 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        SsUtils.init(this).configApiHost("http://127.0.0.1").configIcon(new FontAwesomeModule()).configIcon(new FontEcModule()).configDone();
+        SsUtils.init(this)
+            .configApiHost("http://127.0.0.1")
+            .configIcon(new FontAwesomeModule())
+            .configIcon(new FontEcModule())
+            .configDone();
     }
 }

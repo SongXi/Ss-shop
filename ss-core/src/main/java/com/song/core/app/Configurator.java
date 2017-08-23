@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.WeakHashMap;
+import okhttp3.Interceptor;
 
 /**
  * Created by ljs on 17-8-16. 用来进行配置文件的存储以及获取的
@@ -15,6 +16,7 @@ public final class Configurator {
 
     private static final HashMap<String, Object> SS_CONFIGS = new HashMap<>();
     private static final List<IconFontDescriptor> ICON_FONT_LIST=new ArrayList<>();
+    private static final List<Interceptor> INTERCEPTORS_LIST=new ArrayList<>();
     private Configurator() {
         // 配置剛開始
         SS_CONFIGS.put(ConfigType.CONFIG_READ.name(), false);
@@ -37,14 +39,23 @@ public final class Configurator {
     // 初始化完成后调用
     public void configDone() {
         initIcon();
+        initInterceptors();
         SS_CONFIGS.put(ConfigType.CONFIG_READ.name(), true);
     }
 
-    // 配置apihost
+
+
+  // 配置apihost
     public Configurator configApiHost(String apiHost) {
         SS_CONFIGS.put(ConfigType.API_HOST.name(), apiHost);
         return this;
     }
+
+  //配置okhttp拦截器
+  public Configurator configOkhttpInterceptors(Interceptor interceptor) {
+    INTERCEPTORS_LIST.add(interceptor);
+    return this;
+  }
 
     // 在获取参数的时候先验证参数是否配置完毕
     // 如果没有配置完毕则throw异常
@@ -77,5 +88,9 @@ public final class Configurator {
             }
         }
     }
+
+  private void initInterceptors() {
+    SS_CONFIGS.put(ConfigType.INTERCEPTS.name(),INTERCEPTORS_LIST);
+  }
 
 }
