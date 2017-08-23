@@ -8,6 +8,7 @@ public enum ConfigType {
   APPLICATION_CONTEXT,//全局上下文
   CONFIG_READ,//控制初始化配置是否完成
   INTERCEPTS,//添加OKhttp的拦截器
+  LOADER_DELAYED,//设置
   ICON//
 
 }

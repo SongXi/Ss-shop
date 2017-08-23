@@ -2,6 +2,7 @@ package com.song.core.net;
 
 import android.content.Context;
 import com.song.core.net.callback.IError;
+import com.song.core.net.callback.IFailure;
 import com.song.core.net.callback.IRequest;
 import com.song.core.net.callback.ISuccess;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class RestClientBuilder {
     private Map<String, Object> params;
     private RequestBody body;
     private Context context;
-
+  private IFailure iFailure;
     public RestClientBuilder url(String URL) {
         this.URL = URL;
         return this;
@@ -63,8 +64,13 @@ public class RestClientBuilder {
         return this;
     }
 
-    public RestClient build() {
-        return new RestClient(URL, name, iError, iSuccess, iRequest, params, body, context);
+  public RestClientBuilder setiFailure(IFailure iFailure) {
+    this.iFailure = iFailure;
+    return this;
+  }
+
+  public RestClient build() {
+        return new RestClient(URL, name, iError, iSuccess, iFailure,iRequest, params, body, context);
     }
 
 }
