@@ -5,6 +5,7 @@ import com.song.core.net.callback.IError;
 import com.song.core.net.callback.IFailure;
 import com.song.core.net.callback.IRequest;
 import com.song.core.net.callback.ISuccess;
+import java.io.File;
 import java.util.Map;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -23,10 +24,33 @@ public class RestClientBuilder {
     private Map<String, Object> params;
     private RequestBody body;
     private Context context;
-  private IFailure iFailure;
+    private IFailure iFailure;
+    private File file;
+    private String downloadDir;
+    private String extention;
+
+    public RestClientBuilder setFile(File file) {
+        this.file = file;
+        return this;
+
+    }
+
+    public RestClientBuilder setDownloadDir(String downloadDir) {
+        this.downloadDir = downloadDir;
+        return this;
+
+    }
+
+    public RestClientBuilder setExtention(String extention) {
+        this.extention = extention;
+        return this;
+
+    }
+
     public RestClientBuilder url(String URL) {
         this.URL = URL;
         return this;
+
     }
 
     public RestClientBuilder name(String name) {
@@ -54,8 +78,8 @@ public class RestClientBuilder {
         return this;
     }
 
-    public RestClientBuilder rowBody(String  body) {
-        this.body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"),body);
+    public RestClientBuilder rowBody(String body) {
+        this.body = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), body);
         return this;
     }
 
@@ -64,13 +88,14 @@ public class RestClientBuilder {
         return this;
     }
 
-  public RestClientBuilder setiFailure(IFailure iFailure) {
-    this.iFailure = iFailure;
-    return this;
-  }
+    public RestClientBuilder setiFailure(IFailure iFailure) {
+        this.iFailure = iFailure;
+        return this;
+    }
 
-  public RestClient build() {
-        return new RestClient(URL, name, iError, iSuccess, iFailure,iRequest, params, body, context);
+    public RestClient build() {
+        return new RestClient(URL, name, iError, iSuccess, iFailure, iRequest, params,file, downloadDir,extention,body,
+                context);
     }
 
 }

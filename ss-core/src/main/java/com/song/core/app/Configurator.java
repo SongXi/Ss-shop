@@ -3,6 +3,7 @@ package com.song.core.app;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.Iconify.IconifyInitializer;
+import com.song.core.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
